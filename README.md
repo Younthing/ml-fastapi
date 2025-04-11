@@ -37,15 +37,6 @@ make run-gpu
 # 运行CPU版本容器
 make run-cpu
 
-# 使用Docker Compose启动所有服务
-make up
-
-# 使用Docker Compose启动GPU服务
-make up-gpu
-
-# 使用Docker Compose启动CPU服务
-make up-cpu
-
 # 停止所有容器
 make stop
 
@@ -81,23 +72,3 @@ docker run -d --name deepchem-api-cpu \
     deepchem-api:cpu-latest
 ```
 
-### 使用Docker Compose
-
-```bash
-# 启动所有服务
-cd docker && docker-compose up -d
-
-# 启动GPU服务
-cd docker && docker-compose up -d deepchem-api-gpu
-
-# 启动CPU服务
-cd docker && docker-compose up -d deepchem-api-cpu
-``` 
-
-
-curl -X POST http://172.18.0.2:8000/api/predict \
-  -H "Content-Type: application/json" \
-  -d '{
-    "smiles": "CCO",
-    "name": "Ethanol"
-  }'
